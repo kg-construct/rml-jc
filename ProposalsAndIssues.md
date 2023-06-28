@@ -71,14 +71,13 @@ WHERE {
 
 The patching approach is complementary to using joins and crafted URIs, notably overcoming issues related to:
 - joins when data sources used in joins are not present at the same time (which might be the case for stream processing or KGC flows with a great deal of sources) or when the execution time of joins is excessive,  
-- crafted URIs when rr:subjectMap with rr:templates are inconsistent across RML rule set. Options here could be 1) check mappings against a set of URI patterns, or 2) use variables to build URIs in an error prone way at the mapping stage.  
+- crafted URIs when rr:subjectMap with rr:templates are inconsistent across RML rule set. Options here could be 1) check mappings against a set of URI patterns, or 2) use variables to build URIs in an error prone way at the mapping stage.    
 Challenge with the patching approach is two fold:  
 - Designing the patching queries,  
-- Ensure consistency between mapping rules and patching queries, thereby facilitating the maintenance of both aspects.  
+- Ensure consistency between mapping rules and patching queries, thereby facilitating the maintenance of both aspects.    
 Options for the patching approach, in relation to the introductory “proposal” above (non exhaustive):  
 - Deduce the patching from the RML files using additional RML predicates akin to **reference conditions** (see Els’ proposal above).
-- Relate `rr:TriplesMap` to the relevant pathing queries or patching templates using additional RML predicates such as `toPatchWith(<someGraphPattern>)`.
-
+- Relate `rr:TriplesMap` to the relevant pathing queries or patching templates using additional RML predicates such as `toPatchWith(<someGraphPattern>)`.  
 The current approach used in the “Designing NORIA” paper is to generate patching queries and relate queries to rr:TriplesMap using a specification file with definitions such as (YAML syntax):
 ```
 - id: MP_Solaire_Resource_002
@@ -94,8 +93,7 @@ The current approach used in the “Designing NORIA” paper is to generate patc
 	- extract-query-literal-MP_Solaire_Resource_002.sparql
 	- link-query-literal-MP_Solaire_Resource_002.sparql
 ```
-URI patterns checking assumes prior knowledge of the URI patterns of the knowledge graph. The approach tackles the need to check that the resulting knowledge graph of a complex KGC process (i.e. after inserting triples coming from many mapping processes) is coherent with the URI patterns.  
-
+- URI patterns checking assumes prior knowledge of the URI patterns of the knowledge graph. The approach tackles the need to check that the resulting knowledge graph of a complex KGC process (i.e. after inserting triples coming from many mapping processes) is coherent with the URI patterns.  
 URI patterns example in YAML syntax:  
 ```
 - Base: https://w3id.org/noria/graph/
