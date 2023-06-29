@@ -52,9 +52,13 @@ RML Fields was a proposal to integrate nested data. Maybe this structure can be 
 I tried it with the mapping-challenges dataset and Orange internal data, but no success because of missing implementation of the feature in RMLMapper => https://github.com/kg-construct/mapping-challenges/issues/40 
 
 ### [Patching queries and URI patterns checking](https://w3id.org/kg-construct/workshop/2023/resources/paper3.pdf)
+
 #### *Lionel*
-Proposal: automated patching generation can be enabled by browsing RML files for `rr:predicateObjectMap [rr:objectMap [rml:reference "<someRef>"]]`, potentially with an additional `toPatchWith(<someGraphPattern>)` property for better end-to-end process automation and automated URI template checking.  
+
+Proposal: automated patching generation can be enabled by browsing RML files for `rr:predicateObjectMap [rr:objectMap [rml:reference "<someRef>"]]`, potentially with an additional `toPatchWith(<someGraphPattern>)` property for better end-to-end process automation and automated URI template checking.   
+
 Patching is defined by applying SPARQL Update queries (e.g. of the DELETE & INSERT form) at the knowledge graph level posterior to running several RML mapping & data ingest processes.  
+
 Patching query example:  
 ```
 DELETE { GRAPH ?gs { ?s noria:logOriginatingManagedObject ?o .  } }
@@ -71,10 +75,12 @@ WHERE {
 
 The patching approach is complementary to using joins and crafted URIs, notably overcoming issues related to:
 - joins when data sources used in joins are not present at the same time (which might be the case for stream processing or KGC flows with a great deal of sources) or when the execution time of joins is excessive,  
-- crafted URIs when rr:subjectMap with rr:templates are inconsistent across RML rule set. Options here could be 1) check mappings against a set of URI patterns, or 2) use variables to build URIs in an error prone way at the mapping stage.    
+- crafted URIs when rr:subjectMap with rr:templates are inconsistent across RML rule set. Options here could be 1) check mappings against a set of URI patterns, or 2) use variables to build URIs in an error prone way at the mapping stage.
+     
 Challenge with the patching approach is two fold:  
 - Designing the patching queries,  
-- Ensure consistency between mapping rules and patching queries, thereby facilitating the maintenance of both aspects.    
+- Ensure consistency between mapping rules and patching queries, thereby facilitating the maintenance of both aspects.
+   
 Options for the patching approach, in relation to the introductory “proposal” above (non exhaustive):  
 - Deduce the patching from the RML files using additional RML predicates akin to **reference conditions** (see Els’ proposal above).
 - Relate `rr:TriplesMap` to the relevant pathing queries or patching templates using additional RML predicates such as `toPatchWith(<someGraphPattern>)`.  
@@ -93,7 +99,9 @@ The current approach used in the “Designing NORIA” paper is to generate patc
 	- extract-query-literal-MP_Solaire_Resource_002.sparql
 	- link-query-literal-MP_Solaire_Resource_002.sparql
 ```
-- URI patterns checking assumes prior knowledge of the URI patterns of the knowledge graph. The approach tackles the need to check that the resulting knowledge graph of a complex KGC process (i.e. after inserting triples coming from many mapping processes) is coherent with the URI patterns.  
+  
+URI patterns checking assumes prior knowledge of the URI patterns of the knowledge graph. The approach tackles the need to check that the resulting knowledge graph of a complex KGC process (i.e. after inserting triples coming from many mapping processes) is coherent with the URI patterns.    
+
 URI patterns example in YAML syntax:  
 ```
 - Base: https://w3id.org/noria/graph/
@@ -114,6 +122,7 @@ URI patterns example in YAML syntax:
 	- Name: 'noria:Room'
 	- Name: 'noria:Locus'
 ```
+
 References and remarks towards automated checking:
 - “Extracting URI Patterns from SPARQL Endpoints”, Alessandro Adamou (2014).
 - SHACL does not provide a template definition for URIs, but it allows stating that an object is of type URI.
