@@ -44,7 +44,7 @@ Can be used to replace the classic **join conditions** in combination **referenc
 Once RML Views are accepted, I would personal not need for referencing term maps. I think that the existing referencing object maps are sufficient in that case, just to express relations between triples maps (and in the resulting knowledge graph). 
 
 ### [RML Fields](https://biblio.ugent.be/publication/8720875)
-
+See also [mapping-challenges-rml-fields](https://github.com/RMLio/mapping-challenges-rml-fields/)
 #### *Els*
 RML Fields was a proposal to integrate nested data. Maybe this structure can be extended to formalise virtual (or calculated) references / aliases in general, enabling the renaming of references after a join operation on logical source level, and references for values transformed by fno functions. The reference can then be used inside an rr:template or a rr:reference by more than one term map. This can also be a solution for the remark of static rr:templates (see issue below)
 
