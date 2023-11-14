@@ -9,8 +9,6 @@
 - save as snapshot to function.html [using the respec functionality](https://respec.org/docs/#using-browser)
 - run `node publish.js` to get the index.html + archived version in the `dist` folder
 
-The `dist` folder contents should mimic the contents on `https://w3id.org/kg-construct/rml-target-source`
-
 ## License
 
 RML-JC (c) by W3C Community Group on Knowledge Graph Construction
