@@ -61,12 +61,89 @@ The following example illustrates a left join between two csv files.
 | Waterstones | Oliver Twist | Dickens   |        |         |
 </pre>
 
-
 ### Joining a json file with a csv file
 
-The following example illustrates a left join between a json file and a csv file. 
-The fields are added on the level of the iterator. 
-Because the json file acting as child logical source is a nested file, it needs to be flattened using [Fields](). 
+The following examples illustrate a left join between a json file and a csv file.
+The fields are added on the level of the iterator.
+
+#### Example 1: the json file requires only one array in the path to the needed data 
+
+<aside class="issue">
+Els: explain only one array in path to needed data
+</aside>
+
+**books.json**
+<pre class="ex-input">
+{
+  "books": [
+    { "title": "The Republic",
+      "author": "Plato" },
+    { "title": "Moby Dick",
+      "author": "Melville" },
+    { "title": "Poetics",
+      "author": "Aristotle" },
+    { "title": "Oliver Twist",
+      "author": "Dickens" }
+]
+}
+</pre>
+**bookstats.csv**
+<pre class="ex-input">
+"id","title","sales"
+"book1","The Republic",12459
+"book2","Moby Dick",335555
+"book3","Poetics",254
+</pre>
+
+<pre class="ex-source">
+<#books_csv> a rml:LogicalSource;
+    rml:source [ 
+        a rml:Source, a csvw:Table;
+        csvw:url "/path/to/bookstats.csv";
+    ];
+    rml:referenceFormulation rml:CSV;
+.
+</pre>
+
+<pre class="ex-source">
+<#books_with_sales> 
+    rml:source [ 
+        a rml:Source , dcat:Distribution ;
+        dcat:accessURL <file:///path/to/chains.json> ;
+    ] ;
+    rml:referenceFormulation rml:JSONPath ;
+    rml:iterator "$.books[*]" ;  
+    rml:field [
+        rml:name "name" ;
+        rml:reference "$.name" ;
+    ] ;
+    rml:leftJoin [  
+        a rml:Join ;
+        rml:parentLogicalSource <#bookstats> ;
+        rml:joinCondition [
+            rml:parent "title" ;
+            rml:child "title" ;
+        ] ;
+        rml:addField "sales" ;
+        rml:addField "id" ;
+    ] ;
+.
+</pre>
+
+**Intermediate representation of the logical source <#books_with_sales>**
+<pre class="ex-intermediate">
+| iterator                                         | sales  | id      |
+|--------------------------------------------------|--------|---------|
+| { "title": "The Republic", "author": "Plato" }   | 12459  | book1   |
+| { "title": "Moby Dick", "author": "Melville" }   | 335555 | book2   |
+| { "title": "Poetics", "author": "Aristotle" }    | 254    | book3   |
+| { "title": "Oliver Twist", "author": "Dickens" } |        |         |
+</pre>
+
+
+#### Example 2: the json file requires a second array in the path to the needed data
+
+Because the json file acting as child logical source requires a second array in its json path to reach the needed data, it needs to be flattened using [Fields](). 
 <aside class="issue">
 Els: TODO add link to field spec
 </aside>

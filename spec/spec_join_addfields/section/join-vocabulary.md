@@ -10,7 +10,7 @@ A <dfn>Join</dfn> (`rml:Join`) is an operation that extends one logical source (
 A [=Join=] (`rml:Join`) MUST contain:
 - exactly one [=parent logical source=] property (`rml:parentLogicalSource`) to describe the data source that supplies the additional data. 
 - at least one [=join condition=] property (`rml:joinCondition`) to describe which values are compared to join the two data sources.
-- at least one [=add field=] property (`rml:addField`) or one [=add field alias=] property (`rml:addFielAlias`) to describe a field from the parent logical source that is added to the child logical source. 
+- at least one [=add field=] property (`rml:addField`) or one [=add field alias=] property (`rml:addFieldAlias`) to describe a field from the parent logical source that is added to the child logical source. 
 
 | Property                  | Domain     | Range               |
 |---------------------------|------------|---------------------|
