@@ -2,6 +2,7 @@
 
 ## Quickstart
 
+- run `npm install`
 - edit dev.html
   - Makes sure all your local assets are in the `resources` folder, and the links in your dev.html file are relative (important because the publishing script creates multiple nested paths)
 - run a HTTP server in this directory: `python3 -m http.server`
