@@ -66,6 +66,7 @@ Els: or can we just refer to rml core and not specify any definitions here?
 <aside class="issue">
 Els: can we also optionally declare a join function here, to allow not only equijoins (default) but also other joins
 </aside>
+
 ### Add Field 
 
 The value of an <dfn>add field</dfn> property is a [reference expression](https://kg-construct.github.io/rml-core/spec/docs/#dfn-reference-expression), that is valid in the parent logical source,
@@ -83,6 +84,11 @@ The value of an <dfn>add field alias</dfn> property (`rml:addFieldAlias`) is an 
 |-------------------|----------------------|-----------|
 | `rml:parentField` | `rml:AddFieldAlias ` | `Literal` |
 | `rml:as`          | `rml:AddFieldAlias`  | `Literal` |
+
+<aside class="issue">
+Els: can we use the Field terminology here, `rml:reference` instead of `rml:parentField` and `rml:name` instead of `rml:as`. 
+I read in the Field spec that a field gives a name to a reference, and that is exactly what is happening here as well. 
+</aside>
 
 ### Join types {#dfn-join-type}
 
