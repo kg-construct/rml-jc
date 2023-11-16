@@ -45,14 +45,14 @@ Data types are not taken into account.
 To secure this match a transformation with <a href="https://kg-construct.github.io/rml-fnml/ontology/documentation/index-en.html">RML-FNML:Functions</a> needs to be configured. 
 </aside>
 
+<aside class="note">
+This definition should be in line with the definition in RML CORE, with one small difference: it refers directly to a parent logicial source, and not to the logical source of the parent triples map.
+</aside>
+
 | Property                    | Domain               | Range                     |
 | --------------------------- | -------------------- | ------------------------- |
 | `rml:childMap`              | `rml:JoinCondition`  | `rml:ExpressionMap`       |
 | `rml:parentMap`             | `rml:JoinCondition`  | `rml:ExpressionMap`       |
-
-<aside class="note">
-This definition should be in line with the definition in RML CORE, with one small difference: it refers directly to a parent logicial source, and not to the logical source of the parent triples map.
-</aside>
 
 #### Shortcuts
 
