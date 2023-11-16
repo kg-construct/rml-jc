@@ -35,8 +35,15 @@ A <dfn>Join Condition</dfn> is represented by a resource that MUST contain exact
 which MUST include references that exists in the child logical source, or it should have a constant value.
 
 - a <dfn>parent map</dfn> (`rml:parentMap`), whose value is an [Expression Map](https://kg-construct.github.io/rml-core/spec/docs/#expression-map-rml-expressionmap) (`rml:ExpressionMap`),
-which, as the join condition's parent map, MUST include references that exists in the logical source specified by the [=parent logical source=] property or it should have a constant value.
+which, as the join condition's parent map, MUST include references that exist in the logical source specified by the [=parent logical source=] property or it should have a constant value.
 
+The join condition returns true when values produced by the child map and the parent map during the iteration are equal. 
+<aside class="note">
+String values are compared.
+Data types are not taken into account. 
+`1.0` will not match with `1.00`. 
+To secure this match a transformation with <a href="https://kg-construct.github.io/rml-fnml/ontology/documentation/index-en.html">RML-FNML:Functions</a> needs to be configured. 
+</aside>
 
 | Property                    | Domain               | Range                     |
 | --------------------------- | -------------------- | ------------------------- |
