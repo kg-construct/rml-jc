@@ -50,6 +50,10 @@ To secure this match a transformation with <a href="https://kg-construct.github.
 | `rml:childMap`              | `rml:JoinCondition`  | `rml:ExpressionMap`       |
 | `rml:parentMap`             | `rml:JoinCondition`  | `rml:ExpressionMap`       |
 
+<aside class="note">
+This definition should be in line with the definition in RML CORE, with one small difference: it refers directly to a parent logicial source, and not to the logical source of the parent triples map.
+</aside>
+
 #### Shortcuts
 
 If the value of the [=child map=] property (`rml:childMap`) is a [reference-valued Expression Map](https://kg-construct.github.io/rml-core/spec/docs/#reference-rml-reference),
@@ -63,10 +67,6 @@ then the `rml:parent` shortcut could be used.
 | `rml:child`                 | `rml:JoinCondition`  | `Literal`                 |
 | `rml:parent`                | `rml:JoinCondition`  | `Literal`                 |
 
-
-<aside class="note">
-This definition should be in line with the definition in RML CORE, with one small difference: it refers directly to a parent logicial source, and not to the logical source of the parent triples map.
-</aside>
 <aside class="issue">
 Els: or can we just refer to rml core and not specify any definitions here?
 </aside>
