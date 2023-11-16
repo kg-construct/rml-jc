@@ -25,7 +25,7 @@ The following example illustrates a left join between two csv files.
         a rml:Source, a csvw:Table;
         csvw:url "/path/to/bookstats.csv";
     ];
-    rml:referenceFormulation rml:CSV;
+    rml:referenceFormulation ql:CSV;
 .
 </pre>
 
@@ -97,7 +97,7 @@ The fields are added on the level of the iterator.
         a rml:Source, a csvw:Table;
         csvw:url "/path/to/bookstats.csv";
     ];
-    rml:referenceFormulation rml:CSV;
+    rml:referenceFormulation ql:CSV;
 .
 </pre>
 
@@ -107,7 +107,7 @@ The fields are added on the level of the iterator.
         a rml:Source , dcat:Distribution ;
         dcat:accessURL <file:///path/to/chains.json> ;
     ] ;
-    rml:referenceFormulation rml:JSONPath ;
+    rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.books[*]" ;  
     rml:field [
         rml:name "name" ;
@@ -179,7 +179,7 @@ Els: TODO add link to field spec
         a rml:Source, a csvw:Table;
         csvw:url "/path/to/bookstats.csv";
     ];
-    rml:referenceFormulation rml:CSV;
+    rml:referenceFormulation ql:CSV;
 .
 </pre>
 
@@ -189,7 +189,7 @@ Els: TODO add link to field spec
         a rml:Source , dcat:Distribution ;
         dcat:accessURL <file:///path/to/chains.json> ;
     ] ;
-    rml:referenceFormulation rml:JSONPath ;
+    rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.chains[*]" ;  
     rml:field [
         rml:name "name" ;
@@ -277,7 +277,7 @@ Els: TODO add link to field spec
         a rml:Source , dcat:Distribution ;
         dcat:accessURL <file:///path/to/bookstats.xml> ;
     ] ;
-    rml:referenceFormulation rml:XPath ;
+    rml:referenceFormulation ql:XPath ;
     rml:iterator "/bookstats/book" ;
 .
 </pre>
@@ -362,7 +362,7 @@ Because XPATH can select the parent of a node, no flattening via fields is neede
         a rml:Source , dcat:Distribution ;
         dcat:accessURL <file:///path/to/bookstats.xml> ;
     ] ;
-    rml:referenceFormulation rml:XPath ;
+    rml:referenceFormulation ql:XPath ;
     rml:iterator "/bookstats/year/book" ;
     ] ;
 .
