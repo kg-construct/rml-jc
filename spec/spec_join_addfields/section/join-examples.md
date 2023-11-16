@@ -315,12 +315,7 @@ Els: TODO add link to field spec
 
 #### Example 2: the xml file requires a second array in the path to the needed data
 
-Because the xml file acting as parent logical source container encouters a second array on the path to the needed data,
-it needs to be flattened using [Fields]().
-
-<aside class="issue">
-Els: TODO add link to field spec
-</aside>
+Because XPATH can select the parent of a node, no flattening via fields is needed. 
 
 **chains.csv**
 <pre class="ex-input">
@@ -368,25 +363,7 @@ Els: TODO add link to field spec
         dcat:accessURL <file:///path/to/bookstats.xml> ;
     ] ;
     rml:referenceFormulation rml:XPath ;
-    rml:iterator "/bookstats" ;
-    rml:field [
-        rml:name "year_element" ;
-        rml:reference "/year" ;
-        rml:field [
-            rml:name "book_id" ;
-            rml:reference "/book/@id" ;
-        rml:field [
-            rml:name "book_element" ;
-            rml:reference "/book" ;
-            rml:field [
-                rml:name "title" ;
-                rml:reference "/title" ;
-            ] ;
-            rml:field [
-                rml:name "sales" ;
-                rml:reference "/sales" ;
-            ];
-        ] ;
+    rml:iterator "/bookstats/year/book" ;
     ] ;
 .
 </pre>
@@ -403,18 +380,18 @@ Els: TODO add link to field spec
         rml:parentLogicalSource <#bookstats> ;
         rml:joinCondition [
             rml:child "title" ;
-            rml:parent "year_element.book_element.title" ;
+            rml:parent "title" ;
         ] ;
         rml:addFieldAlias [
-            rml:parentField "/year/@id"
+            rml:parentField "parent::year/@id"
             rml:as "year"
         ] ;
         rml:addFieldAlias [
-            rml:parentField "year_element.book_element.sales"
+            rml:parentField "sales"
             rml:as "sales"
         ] ;
         rml:addFieldAlias [
-            rml:parentField "year_element.book_id"
+            rml:parentField "@id"
             rml:as "book_id"
         ] ;
     ] ;
