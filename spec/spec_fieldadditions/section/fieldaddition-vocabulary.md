@@ -101,15 +101,15 @@ I read in the Field spec that a field gives a name to a reference, and that is e
 The Logical Source vocabulary is extended with join properties, specifying the join type, i.e. a [=left join=] and a [=inner join=].
 
 A <dfn>left join</dfn> (`rml:leftJoin`) is the equivalent of a left (outer) join in SQL, where the child logical source is the left part of the join, and the parent logical source is the right part of the join.
-After the join operation all iterations of the child logical source are kept. 
-These iterations are extended with values from the parent logical source when a match is found that meets the join conditions.
-Any additional match results in a duplication of the iteration. 
-If no match is found for an iteration, the added field contains a null value for that iteration. 
+After the join operation all logical iterations of the child logical source are kept. 
+These logical iterations are extended with values from the parent logical source when a match is found that meets the join conditions.
+When more than one logical iteration in the parent logical sources matches with a logical iteration in the child logical source, each match leads to an additional extended logical iteration. 
+If no match is found, the added field in that extended logical iteration contains a null value. 
 
 A <dfn>inner join</dfn> (`rml:innerJoin`) is the equivalent of an inner join in SQL.
-The iterations  from the child logical source are extended with values from the parent logical source when a match is found that meets the join conditions.
-Any additional match results in a duplication of the iteration.
-If no match is found for an iteration, the iteration is removed from the logical source. 
+The logical iterations are extended with values from the parent logical source when a match is found that meets the join conditions.
+When more than one logical iteration in the parent logical sources matches with a logical iteration in the child logical source, each match leads to an additional extended logical iteration.
+If no match is found for a logical iteration, the logical iteration is removed from the child logical source. 
 
 <aside class="issue">
 Els: Should we open an option to add more join types in future? 
