@@ -1,7 +1,7 @@
-## Join examples {#join-examples}
+## Field Addition examples {#fieldaddition-examples}
 
-### Joining two CSV files
-The following example illustrates a left join between two csv files. 
+### Combining data from two CSV files
+The following example illustrates how data from two csv files is combined via a left join. 
 
 **chains.csv**
 <pre class="ex-input">
@@ -61,12 +61,13 @@ The following example illustrates a left join between two csv files.
 | Waterstones | Oliver Twist | Dickens   |        |         |
 </pre>
 
-### Joining a json file with a csv file
+### Combining data from a json file and a csv file
 
-The following examples illustrate a left join between a json file and a csv file.
-The fields are added on the level of the iterator.
+The following example illustrates how data from a json file is combined with data from a csv file via a left join.
 
-#### Example 1: the json file requires only one array in the path to the needed data 
+#### Example 1:  
+
+In this example the json file requires only one array in the path to the needed data. 
 
 **books.json**
 <pre class="ex-input">
@@ -137,7 +138,7 @@ The fields are added on the level of the iterator.
 </pre>
 
 
-#### Example 2: the json file requires a second array in the path to the needed data
+#### Example 2
 
 Because the json file acting as child logical source requires a second array in its json path to reach the needed data, it needs to be flattened using [Fields](). 
 
@@ -237,12 +238,8 @@ Els: TODO add link to field spec
 The following example illustrates a inner join between a csv file and a xml file.
 
 
-#### Example 1: the xml file requires only one array in the path to the needed data
+#### Example 1
 Because of the inner join, the logical source <#chains_with_sales> contains one iteration less than the previous two examples.
-
-<aside class="issue">
-Els: TODO add link to field spec
-</aside>
 
 **chains.csv**
 <pre class="ex-input">
@@ -313,8 +310,8 @@ Els: TODO add link to field spec
 | Waterstones | Poetics      | Aristotle | 254    | book3   |
 </pre>
 
-#### Example 2: the xml file requires a second array in the path to the needed data
-
+#### Example 2: 
+In this example the xml file requires a second array in the path to the needed data. 
 Because XPATH can select the parent of a node, no flattening via fields is needed. 
 
 **chains.csv**

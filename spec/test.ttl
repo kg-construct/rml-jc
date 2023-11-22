@@ -1,0 +1,30 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix : <http://knows.com/base/> .
+@prefix ceon: <http://w3id.org/CEON/ontology/> .
+@prefix voc: <http://example.com/voc/> .
+@prefix product: <http://example.com/product/> .
+@prefix company: <http://example.com/company/> .
+@prefix pcds: <http://example.com/pcds/> .
+@prefix ceonproduct: <http://w3id.org/CEON/ontology/product/> .
+@prefix ceonactor: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+
+<#bookstats>
+    a rml:LogicalSource;
+    rml:source ./bookstats.xml> ;
+    rml:referenceFormulation rml:XPath ;
+    rml:iterator "/bookstats/year/book" ;
+.
+
